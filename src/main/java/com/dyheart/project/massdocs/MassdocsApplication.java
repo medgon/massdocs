@@ -1,27 +1,27 @@
 package com.dyheart.project.massdocs;
 
-import java.util.Arrays;
-import java.util.concurrent.Executor;
-
-import org.apache.catalina.connector.Connector;
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
-import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 //import org.springframework.security.core.context.SecurityContextHolder;
+
+import com.dyheart.project.massdocs.repository.UserRepository;
 
 
 @SpringBootApplication
-@EnableAsync
 public class MassdocsApplication {
 	
-	static Logger log = Logger.getRootLogger();
+	 @Autowired
+	 UserRepository userRepository;
+	
+	public static void main(String[] args) {
+		SpringApplication.run(MassdocsApplication.class, args);
+		
+
+	}
+	
+	
+	/*static Logger log = Logger.getRootLogger();
 	
 	@Value("${tomcat.ajp.port}")
 	int ajpPort;
@@ -33,7 +33,7 @@ public class MassdocsApplication {
 	boolean tomcatAjpEnabled;
 	
 	public static void main(String[] args) {
-		/*SpringApplication.run(MassdocsApplication.class, args);*/
+		SpringApplication.run(MassdocsApplication.class, args);
 		
 		ApplicationContext appCtx = SpringApplication.run(MassdocsApplication.class, args);
 		
@@ -78,6 +78,6 @@ public class MassdocsApplication {
 	          executor.setThreadNamePrefix("App-Executor-");
 	    executor.initialize();
 	    return executor;
-	}
+	}*/
 }
 
